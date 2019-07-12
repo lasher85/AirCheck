@@ -1,4 +1,4 @@
-## AirCheck
+# AirCheck
 
 A web app showing the air polution historical data in chosen cities of Poland based on information obtained from Airly sensors through their API.
 
