@@ -1,0 +1,8 @@
+*.pyc
+.env
+db.sqlite3
+myvenv
+__pycache__
+development.py
+AirCheck_Azure.sublime-project
+AirCheck_Azure.sublime-workspace
