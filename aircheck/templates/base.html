@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    {% load static %}
+    
+    <!-- <script src="{% static 'css/RangeSlider-all.min.css' %}"></script> -->
+    <!-- <script src="{% static 'js/RangeSlider-all.min.js' %}"></script> -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143325333-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-143325333-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+
+    <title>AirCheck - Check the air quality in your neighborhood</title>
+    
+    {% include 'base/css.html' %}
+
+    <link rel="stylesheet" href="{% static 'css/aircheck.css' %}">
+  </head>
+  <body>
+    <br>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="navbar-brand">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link nav-link-home" href="{% url 'pm1' %}"><i class="fa fa-fw fa-home"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pm1' %}">PM 1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pm25' %}">PM 2.5</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pm10' %}">PM 10</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pressure' %}">Pressure</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'humidity' %}">Humidity</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'temperature' %}">Temperature</a>
+                </li>
+                <!-- Dropdown disabled -->
+                <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle disabled" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compare</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="{% url 'krakow_pm25_compare' %}">Kraków - PM 2.5</a>
+                          <a class="dropdown-item" href="{% url 'krakow_pm10_compare' %}">Kraków - PM 10</a>
+                      </div>
+                </li>
+              </ul>
+            </div>
+            <a class="navbar-brand" href="https://www.map.airly.eu" target="_blank">
+              <div class="logo-image">
+                <img src="https://cdn.airly.eu/assets/LogoBlue.svg" class="img-fluid">
+              </div>
+            </a>
+      </nav>
+    </div>
+    <br>
+    <div class="container">
+      <div class="main-section">
+          {% block content %}
+          {% endblock content %}
+      </div>
+    </div>
+    <br>
+  <!-- Footer -->
+  <div class="container">
+    <section id="footer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+            <h5>Sensor Locations:</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-4 col-md-4 text-center text-white">
+            <ul class="list-unstyled quick-links">
+              <li><a href="https://airly.eu/map/en/#50.04774,19.91965,i6554" target="_blank"><i class="fa fa-angle-double-right"></i>Kraków</a></li>
+              <li><a href="https://airly.eu/map/en/#50.11713,19.61655,i3057" target="_blank"><i class="fa fa-angle-double-right"></i>Tenczynek</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 text-center text-white">
+            <ul class="list-unstyled quick-links">
+              <li><a href="https://airly.eu/map/en/#50.25971,19.01713,i700" target="_blank"><i class="fa fa-angle-double-right"></i>Katowice</a></li>
+              <li><a href="https://airly.eu/map/en/#50.13651,19.62908,i483" target="_blank"><i class="fa fa-angle-double-right"></i>Krzeszowice</a></li>
+              <li><a href="https://airly.eu/map/en/#53.49353,18.76180,i3318" target="_blank"><i class="fa fa-angle-double-right"></i>Grudziądz</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 text-center text-white">
+            <ul class="list-unstyled quick-links">
+              <li><a href="https://airly.eu/map/en/#54.34854,18.64966,i3432" target="_blank"><i class="fa fa-angle-double-right"></i>Gdańsk</a></li>
+              <li><a href="https://airly.eu/map/en/#54.48889,18.54904,i2962" target="_blank"><i class="fa fa-angle-double-right"></i>Gdynia</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-3">
+            <ul class="list-unstyled list-inline social text-center">
+              <li class="list-inline-item"><a href="https://github.com/lasher85" target="_blank"><i class="fa fa-github"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/maciej-fiutkowski-b8347760/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <li class="list-inline-item"><a href="mailto:m.fiutkowski@gmail.com"><i class="fa fa-envelope"></i></a></li>
+            </ul>
+          </div>
+          </hr>
+        </div>  
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+            <p class="h6">Copyright &copy; Maciej Fiutkowski - All Rights Reserved</p>
+          </div>
+          </hr>
+        </div>  
+    </section>
+    <!-- ./Footer -->
+    <br>
+    {% include 'base/js.html' %}
+    <script>
+      $(document).ready(function(){
+        {% block jquery %}{% endblock %}
+      })
+    </script>
+  </body>
+</html>
